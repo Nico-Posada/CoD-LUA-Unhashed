@@ -1,10 +1,10 @@
 # Overview
 This is a script I was able to whip together to make analyzing the game's LUA files a much better experience.
 
-It is able to find and properly get the plaintext values of many:
- - filenames
+It is able to find and properly get the plaintext strings of many:
+ - file names
  - function names
- - strings
+ - (hashed) strings
 
 # Needed
 You need to install Ruby for this, I don't use any external libraries/gems so a clean install of Ruby should work just fine.
