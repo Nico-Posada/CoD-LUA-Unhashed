@@ -6,7 +6,7 @@ def init_localize
     text = File.read json_filename
 
     # custom parser bc i was feeling quirky
-    text.scan(/\"hash\":\s?\"([A-F\d]+)\",\s+\"translation\":\s?\"(.*?)(?<!\\)\"/).each do |hash, tr|
+    text.scan(/\"([A-F\d]+)\":\s*\"(.*?)(?<!\\)\"/).each do |hash, tr|
         hash = hash.to_i 16
         $localize[hash] = tr unless $localize.has_key? hash
     end
