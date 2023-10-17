@@ -6,7 +6,7 @@ It is able to find and properly get the plaintext strings of many:
  - function names
  - (hashed) strings
 
-# Needed
+# Requirements
 You need to install Ruby for this, I don't use any external libraries/gems so a clean install of Ruby should work just fine.
 
 # Before Using the Script
