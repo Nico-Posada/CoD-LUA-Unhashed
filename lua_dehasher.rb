@@ -64,7 +64,7 @@ if !use_strings
 end
 
 # fix all funcs and strings, then copy file to its new home
-files.each do |file|
+files.each_with_index do |file, i|
     text = File.read file
     text = fix_func_names text
     text = fix_str_names text if use_strings
@@ -84,4 +84,6 @@ files.each do |file|
 
         File.open(new_path, ?w){|f| f.write text}
     end
+
+    puts "Fixed file #{i+1} / #{files.size}"
 end
