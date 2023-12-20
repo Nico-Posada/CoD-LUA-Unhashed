@@ -1,3 +1,4 @@
+# * THIS IS THE OLD VERSION OF THE DEHASHER, ONLY HERE FOR LEGACY REASONS. USE THE MAIN BUILD *
 # Overview
 This is a script I was able to whip together to make analyzing the game's LUA files a much better experience.
 
