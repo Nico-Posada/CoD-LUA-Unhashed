@@ -97,6 +97,6 @@ end
 exit(main())
 {% else %}
 puts """This build was made for Windows only.
-You can try to compile with Linux (the only other supported system),
+You can try to compile with another system,
 but this project was only made with Windows in mind"""
 {% end %}
