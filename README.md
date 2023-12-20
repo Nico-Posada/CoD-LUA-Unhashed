@@ -14,7 +14,9 @@ You must decompile your Lua files using JariK's Lua decompiler found [here](http
 In the command line, type the following:
 `./lua_dehasher.exe <path>`
 where `path` is the path to your directory holding all of your Lua files.
+
 **OR**
+
 Drag and drop your folder of Lua files onto the exe file and it'll begin execution.
 
 You'll also need a localize.json file (a default one can be found in the `localize` directory in this repository). When running the program, make sure to have this localize.json file in the same directory as the executable. Although the JSON isn't required to actually run the program, it still helps to make the final LUA file outputs much cleaner.

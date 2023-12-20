@@ -70,14 +70,14 @@ def main() : Int32
         hashed_filename : String = File.basename(file, ".dec.lua")
         hash : UInt64 = hashed_filename.to_u64(16)
         if !filenames.has_key?(hash)
-            new_path : String = dir + "/Parsed/Hashed/" + hashed_filename + ".lua"
-            new_dir : String = File.dirname(new_path)
+            new_path = dir + "/Parsed/Hashed/" + hashed_filename + ".lua"
+            new_dir = File.dirname(new_path)
             Dir.mkdir_p(new_dir) unless Dir.exists?(new_dir)
 
             File.open(new_path, "w"){|f| f.print(lua_file)}
         else
-            new_path : String = dir + "/Parsed/Dehashed/" + filenames[hash]
-            new_dir : String = File.dirname(new_path)
+            new_path = dir + "/Parsed/Dehashed/" + filenames[hash]
+            new_dir = File.dirname(new_path)
             Dir.mkdir_p(new_dir) unless Dir.exists?(new_dir)
 
             File.open(new_path, "w"){|f| f.print(lua_file)}
