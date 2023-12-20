@@ -1,7 +1,7 @@
 # CoD Lua Dehasher
 This is a program that's able to take Call of Duty's decompiled Lua files, and dehash about 98% of their file names while also dehashing many strings and function names.
 
-**BIG OVERHAUL UPDATE**
+**BIG OVERHAUL UPDATE**:
 I updated this project to use [Crystal](https://crystal-lang.org) instead of Ruby. If you look at the code between the old version (still in the legacy folder) and the new version, you'll notice that the code looks somewhat similar. That's because Crystal is, in simple terms, just a compiled Ruby. This makes the script run much faster along with the code being a lot safer now! I also changed how the localize JSON should be structed along with a few minor bug-fixes.
 
 # Requirements
@@ -13,10 +13,7 @@ You must decompile your Lua files using JariK's Lua decompiler found [here](http
 # Usage
 In the command line, type the following:
 `./lua_dehasher.exe <path>`
-where `path` is the path to your directory holding all of your Lua files.
-
-**OR**
-
+where `path` is the path to your directory holding all of your Lua files.<br>**OR**<br>
 Drag and drop your folder of Lua files onto the exe file and it'll begin execution.
 
 You'll also need a localize.json file (a default one can be found in the `localize` directory in this repository). When running the program, make sure to have this localize.json file in the same directory as the executable. Although the JSON isn't required to actually run the program, it still helps to make the final LUA file outputs much cleaner.
