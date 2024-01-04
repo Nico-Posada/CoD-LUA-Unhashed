@@ -1,3 +1,4 @@
-gcc -Wall -O3 -march=native -c .\util\C-functions\fnv64.c -o .\util\C-functions\fnv64.o
-mkdir build 2> NUL
-crystal build -o .\build\lua_dehasher.exe lua_dehasher.cr --release --no-debug
+@echo off
+mkdir bin 2> NUL
+gcc -m64 -Wall -O3 -march=native -c .\src\util\C-src\fnv64.c -o .\src\util\C-src\fnv64.o
+crystal build -o .\bin\lua_dehasher.exe .\src\lua_dehasher.cr --release --no-debug

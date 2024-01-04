@@ -1,6 +1,6 @@
 #define ull unsigned long long
 
-ull fnv64(const char* string) {
+unsigned long long fnv64(const char* string) {
     ull hash = 0x47F5817A5EF961BA;
     ull prime = 0x100000001B3;
 

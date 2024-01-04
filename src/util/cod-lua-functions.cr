@@ -1,7 +1,7 @@
 class CodFunctions
-    @@funcs : Hash(UInt64, String) = {} of UInt64 => String
+    @funcs : Hash(UInt64, String) = {} of UInt64 => String
     def initialize
-        @@funcs = {
+        @funcs = {
             0xFAE10DBEF657D2CFu64 => "FrameUpdate",
             0x80BF49158340D36Eu64 => "ClientModelsInitialized",
             0x039DC65D857920C4u64 => "FindAnimTrees",
@@ -2445,10 +2445,30 @@ class CodFunctions
             0x31EEE6570EF4BB8Bu64 => "GetChallengeProgress",
             0xD0B853FAE9166621u64 => "IsNew",
             0xB2E8E1A5F3FF9F4Cu64 => "ClearNew",
+            0xF3C667D78516253Cu64 => "IsNilOrInvalidXHashAsset",
+            0x3976050AED2BE7DBu64 => "ConvertTableKeysToXhash",
+            0xF8E3DCA4146A6C2Fu64 => "SetAutoXHashMetatable",
+            0xCFA08F50830658D8u64 => "AssertOnTypeNameString",
+            0x32CB0B26C46C75BAu64 => "AssertOnEventHandlerStringKey",
+            0x4A7B3E3DE7B19B49u64 => "AssertOnSequenceStringKey",
+            0xF06093D047200548u64 => "GetScriptBundle",
+            0xE15D98DF5F61904Bu64 => "DLog_LuaRecordEvent",
+            0x64F2A2C997DB66C9u64 => "IsGamepadEnabled",
+            0x084287BE93239E99u64 => "IsTouchEnabled",
+            0xCE25E29D8ADE8F27u64 => "IsMobile",
+            0x11DCFBFA7CE6FA83u64 => "IsPS5",
+            0x3836C8AD984F14F6u64 => "IsSony",
+            0xA9D348E40740E9A8u64 => "IsXbox",
+            0x5688D8FAA39ECCE1u64 => "IsXB4",
+            0x62AB3689798DD031u64 => "IsUsingPS5Controller",
+            0xD89568FAED505116u64 => "IsIOS",
+            0x24929608AF0C2C5Cu64 => "IsAndroid",
+            0xD1022B08B0568247u64 => "IsSocialOnlyMode",
+            0x77B4C6A9A1DEE3D7u64 => "IsAudioVisualizationWheelEnabled",
         }
     end
 
     def funcs : Hash(UInt64, String)
-        @@funcs
+        @funcs
     end
 end
