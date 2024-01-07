@@ -1,5 +1,6 @@
 require "json"
 require "./cod-lua-functions.cr"
+require "./fnv64.cr"
 
 class Dehasher
     @localize : Hash(UInt64, String) = {} of UInt64 => String
@@ -15,7 +16,7 @@ class Dehasher
         json_text : String = File.read(found_name)
         json_data : Hash(String, String) = Hash(String, String).from_json(json_text)
 
-        @localize = json_data.transform_keys{|key| key.to_u64(16)}
+        @localize = json_data.transform_keys{|key| key.includes?('/') ? Fnv64.hash(key) : key.to_u64(16)}
         return true
     end
 

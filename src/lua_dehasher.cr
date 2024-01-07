@@ -28,7 +28,7 @@ def main() : Int32
         return 1
     end
 
-    puts "Decompiled files found to analyze: #{files.size}"
+    puts "Decompiled files found to analyze => #{files.size}"
 
     # find file names within the decompiled luas
     results : Array(String) = files.flat_map do |file|
@@ -42,19 +42,21 @@ def main() : Int32
     # create and populate the hash table with the cleaned up filenames
     filenames : Hash(UInt64, String) = {} of UInt64 => String
     results.each do |filename|
-        next unless filename =~ /\./
+        next unless filename.includes?('.')
 
-        fixed_filename : String = filename.gsub(/\./, "/") + ".lua"
+        fixed_filename : String = filename.tr(".", "/") + ".lua"
         hash : UInt64 = Fnv64.hash(fixed_filename)
         filenames[hash] = fixed_filename unless filenames.has_key?(hash)
     end
 
-    puts "Number of possible Lua file names: #{filenames.size}"
+    puts "Number of possible Lua file names => #{filenames.size}"
 
-    # search for localize json and parse, if it doesnt exist prompt the user to see if they'd like to continue
+    # search for localize json and parse
     dehash : Dehasher = Dehasher.new
-    json : Bool = dehash.init_localize()
-    if !json
+    localize_set_up : Bool = dehash.init_localize()
+
+    # if it doesnt exist, prompt the user to see if they'd like to continue
+    unless localize_set_up
         print "Failed to find localize.json in your local directory! Would you like to continue? [Y/N]: "
         user_input : String = gets || "N"
 
@@ -77,7 +79,7 @@ def main() : Int32
         # fix all function names and strings
         lua_file = File.read(file)
         lua_file = dehash.fix_functions(lua_file, cod.funcs)
-        lua_file = dehash.fix_strings(lua_file) if json
+        lua_file = dehash.fix_strings(lua_file) if localize_set_up
         
         # using the hash of the filename, check to see if we were able to find the plaintext filename anywhere
         hashed_filename : String = File.basename(file, ".dec.lua")
