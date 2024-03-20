@@ -1,2 +1,2 @@
 bin/
-src/util/c-src/fnv64.o
+src/util/bindings/fnv64.o

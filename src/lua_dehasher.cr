@@ -1,7 +1,7 @@
 {% if flag?(:win32) %}
 require "./util/fnv64.cr"
-require "./util/cod-lua-functions.cr"
-require "./util/dehashing-util.cr"
+require "./util/translations/functions.cr"
+require "./util/dehashing_util.cr"
 
 def main() : Int32
     if ARGV.size != 1
@@ -16,10 +16,10 @@ def main() : Int32
     end
 
     # initialization
-    cod : CodFunctions = CodFunctions.new
+    # cod : CoDFunctions = CoDFunctions.new
 
     # change a path like 'C:\path\to\somwhere\' to 'C:/path/to/somwhere'
-    fixed_dirname : String = dir.tr("\\", "/").sub(/\/$/,"")
+    fixed_dirname : String = dir.tr("\\", "/").sub(/\/$/, "")
 
     # grab all lua files that need fixing and make sure there are any at all
     files : Array(String) = Dir.glob("#{fixed_dirname}/*.dec.lua")
@@ -49,7 +49,7 @@ def main() : Int32
         filenames[hash] = fixed_filename unless filenames.has_key?(hash)
     end
 
-    puts "Number of possible Lua file names => #{filenames.size}"
+    puts "Number of possible lua file names => #{filenames.size}"
 
     # search for localize json and parse
     dehash : Dehasher = Dehasher.new
@@ -78,8 +78,8 @@ def main() : Int32
     files.each_with_index do |file, i|
         # fix all function names and strings
         lua_file = File.read(file)
-        lua_file = dehash.fix_functions(lua_file, cod.funcs)
-        lua_file = dehash.fix_strings(lua_file) if localize_set_up
+        lua_file = dehash.fix_functions(lua_file)
+        lua_file = dehash.fix_general(lua_file) if localize_set_up
         
         # using the hash of the filename, check to see if we were able to find the plaintext filename anywhere
         hashed_filename : String = File.basename(file, ".dec.lua")
@@ -108,7 +108,7 @@ def main() : Int32
         end
     end
 
-    puts "\n\nFiles dehashed         => #{dehashed_files}", "Files unable to dehash => #{hashed_files}", "\nDone!"
+    puts "\n\nFilenames fixed         => #{dehashed_files}", "Filenames unable to fix => #{hashed_files}", "\nDone!"
     return 0
 end
 

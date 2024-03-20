@@ -1,4 +1,4 @@
-@[Link(ldflags: "#{__DIR__}/c-src/fnv64.o")]
+@[Link(ldflags: "#{__DIR__}/bindings/fnv64.o")]
 lib LibFnv64
     fun fnv64(string : UInt8*) : UInt64
 end

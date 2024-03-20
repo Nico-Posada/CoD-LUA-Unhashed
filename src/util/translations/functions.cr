@@ -1,4 +1,5 @@
-class CodFunctions
+# list of function names and their hashes dumped from the MW19 pdb
+class CoDFunctions
     @funcs : Hash(UInt64, String) = {} of UInt64 => String
     def initialize
         @funcs = {
