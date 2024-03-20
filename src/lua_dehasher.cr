@@ -1,6 +1,5 @@
 {% if flag?(:win32) %}
 require "./util/fnv64.cr"
-require "./util/translations/functions.cr"
 require "./util/dehashing_util.cr"
 
 def main() : Int32
@@ -14,9 +13,6 @@ def main() : Int32
         puts "Error: #{dir} is not a directory"
         return 1
     end
-
-    # initialization
-    # cod : CoDFunctions = CoDFunctions.new
 
     # change a path like 'C:\path\to\somwhere\' to 'C:/path/to/somwhere'
     fixed_dirname : String = dir.tr("\\", "/").sub(/\/$/, "")
